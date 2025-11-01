@@ -2,7 +2,7 @@ import QRCodeGenerator from "@/components/QRCodeGenerator";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen gradient-background flex flex-col">
       <header className="border-b border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
