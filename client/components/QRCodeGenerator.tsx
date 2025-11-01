@@ -138,7 +138,7 @@ export default function QRCodeGenerator() {
             }`}
           >
             <div className="flex flex-col items-center justify-center gap-3">
-              <Upload className="w-8 h-8 text-white/70" />
+              <Upload className="w-8 h-8 text-orange-500" />
               <div className="text-center">
                 <p className="text-white font-medium">Drag and drop here</p>
                 <p className="text-white/50 text-xs mt-1">Drop a text file to generate QR code</p>
