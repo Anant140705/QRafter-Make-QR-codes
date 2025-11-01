@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Download, Copy, Check } from "lucide-react";
+import { Download, Copy, Check, Upload } from "lucide-react";
 
 export default function QRCodeGenerator() {
   const [input, setInput] = useState("");
