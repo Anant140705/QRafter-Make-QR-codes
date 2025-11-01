@@ -131,6 +131,74 @@
   }
 }
 
+@keyframes float-up-1 {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes float-up-2 {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-150px);
+    opacity: 0;
+  }
+}
+
+@keyframes float-up-3 {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(75px);
+    opacity: 0;
+  }
+}
+
+@keyframes float-up-4 {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.45;
+  }
+  90% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-120px);
+    opacity: 0;
+  }
+}
+
 .gradient-background {
   background: linear-gradient(
     -45deg,
@@ -144,4 +212,81 @@
   );
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-background::before,
+.gradient-background::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.gradient-background::before {
+  background: radial-gradient(circle, rgba(100, 150, 255, 0.3), transparent);
+  left: 10%;
+  animation: float-up-1 12s ease-in infinite;
+}
+
+.gradient-background::after {
+  background: radial-gradient(circle, rgba(150, 100, 255, 0.2), transparent);
+  right: 15%;
+  animation: float-up-2 15s ease-in infinite;
+  animation-delay: 2s;
+}
+
+.gradient-background {
+  --floating-orb-1: 150px;
+  --floating-orb-2: 180px;
+  --floating-orb-3: 120px;
+  --floating-orb-4: 160px;
+}
+
+.gradient-background .floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.floating-orb-1 {
+  width: var(--floating-orb-1);
+  height: var(--floating-orb-1);
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.2), transparent);
+  left: 5%;
+  animation: float-up-1 14s ease-in infinite;
+}
+
+.floating-orb-2 {
+  width: var(--floating-orb-2);
+  height: var(--floating-orb-2);
+  background: radial-gradient(circle, rgba(200, 50, 255, 0.15), transparent);
+  right: 10%;
+  animation: float-up-2 16s ease-in infinite;
+  animation-delay: 1s;
+}
+
+.floating-orb-3 {
+  width: var(--floating-orb-3);
+  height: var(--floating-orb-3);
+  background: radial-gradient(circle, rgba(100, 255, 200, 0.15), transparent);
+  left: 20%;
+  bottom: -100px;
+  animation: float-up-3 13s ease-in infinite;
+  animation-delay: 3s;
+}
+
+.floating-orb-4 {
+  width: var(--floating-orb-4);
+  height: var(--floating-orb-4);
+  background: radial-gradient(circle, rgba(255, 100, 150, 0.15), transparent);
+  right: 20%;
+  bottom: -150px;
+  animation: float-up-4 15s ease-in infinite;
+  animation-delay: 0.5s;
 }
