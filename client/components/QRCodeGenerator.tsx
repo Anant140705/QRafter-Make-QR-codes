@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Download, Copy, Check, Upload } from "lucide-react";
+import { Download, Copy, Check, Upload, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function QRCodeGenerator() {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [qrCode, setQrCode] = useState("");
   const [loading, setLoading] = useState(false);
