@@ -124,6 +124,29 @@ export default function QRCodeGenerator() {
           />
         </div>
 
+        <div className="relative">
+          <div className="text-center text-white/50 text-sm mb-3">Or</div>
+          <div
+            ref={dropZoneRef}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            className={`w-full px-6 py-12 border-2 border-dashed rounded-lg transition-all backdrop-blur-sm ${
+              isDragging
+                ? "border-cyan-400 bg-cyan-500/10"
+                : "border-white/30 bg-white/5 hover:border-white/50 hover:bg-white/10"
+            }`}
+          >
+            <div className="flex flex-col items-center justify-center gap-3">
+              <Upload className="w-8 h-8 text-white/70" />
+              <div>
+                <p className="text-white font-medium">Drag and drop here</p>
+                <p className="text-white/50 text-xs mt-1">Drop a text file to generate QR code</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {qrCode && (
           <div className="flex flex-col items-center space-y-6">
             <div className="bg-white p-4 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm">
