@@ -83,7 +83,7 @@ export default function QRCodeGenerator() {
 
         {qrCode && (
           <div className="flex flex-col items-center space-y-6">
-            <div className="bg-white p-4 rounded-lg shadow-sm border border-border">
+            <div className="bg-white p-4 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm">
               <img
                 src={qrCode}
                 alt="Generated QR Code"
@@ -94,14 +94,14 @@ export default function QRCodeGenerator() {
             <div className="flex gap-3 flex-wrap justify-center">
               <button
                 onClick={downloadQRCode}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg font-medium transition-all hover:shadow-md active:scale-95"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition-all hover:shadow-lg active:scale-95"
               >
                 <Download className="w-4 h-4" />
                 Download
               </button>
               <button
                 onClick={copyToClipboard}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-lg font-medium transition-all hover:shadow-sm active:scale-95"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-medium transition-all hover:shadow-lg active:scale-95 backdrop-blur-sm border border-white/20"
               >
                 {copied ? (
                   <>
