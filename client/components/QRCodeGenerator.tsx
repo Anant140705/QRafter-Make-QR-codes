@@ -151,39 +151,21 @@ export default function QRCodeGenerator() {
 
         {qrCode && (
           <div className="flex flex-col items-center space-y-6">
-            <div className="bg-white p-4 rounded-lg shadow-lg border border-white/20 backdrop-blur-sm">
-              <img
-                src={qrCode}
-                alt="Generated QR Code"
-                className="w-80 h-80 max-w-full"
-              />
+            <div className="bg-gradient-to-br from-green-500/20 to-cyan-500/20 p-4 rounded-lg border border-green-500/30">
+              <p className="text-green-400 text-sm font-medium">✓ QR Code Generated!</p>
             </div>
 
-            <div className="flex gap-3 flex-wrap justify-center">
-              <button
-                onClick={downloadQRCode}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition-all hover:shadow-lg active:scale-95"
-              >
-                <Download className="w-4 h-4" />
-                Download
-              </button>
-              <button
-                onClick={copyToClipboard}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-medium transition-all hover:shadow-lg active:scale-95 backdrop-blur-sm border border-white/20"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4" />
-                    Copy Text
-                  </>
-                )}
-              </button>
-            </div>
+            <button
+              onClick={() =>
+                navigate("/qr-result", {
+                  state: { qrCodeUrl: qrCode, inputText: input },
+                })
+              }
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium transition-all hover:shadow-lg active:scale-95"
+            >
+              View QR Code
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         )}
 
