@@ -111,7 +111,7 @@ export default function QRCodeGenerator() {
 
   return (
     <div className="w-full max-w-lg">
-      <div className="space-y-0">
+      <div className="space-y-8">
         <div>
           <label htmlFor="qr-input" className="block text-sm font-medium text-white mb-3">
             Enter text or URL
