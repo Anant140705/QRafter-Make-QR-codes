@@ -118,3 +118,30 @@
     white-space: pre;
   }
 }
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background {
+  background: linear-gradient(
+    -45deg,
+    #1a0033,
+    #2a0845,
+    #0d1b4d,
+    #001a4d,
+    #004d33,
+    #4d3300,
+    #330000
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
