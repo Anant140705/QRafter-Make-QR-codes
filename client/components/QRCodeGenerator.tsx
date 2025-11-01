@@ -1,0 +1,138 @@
+import { useState, useRef, useEffect } from "react";
+import { Download, Copy, Check } from "lucide-react";
+
+export default function QRCodeGenerator() {
+  const [input, setInput] = useState("");
+  const [qrCode, setQrCode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const generateQRCode = async (text: string) => {
+    if (!text.trim()) {
+      setQrCode("");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const encodedText = encodeURIComponent(text);
+      setQrCode(`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodedText}`);
+    } catch (error) {
+      console.error("Error generating QR code:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      generateQRCode(input);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [input]);
+
+  const downloadQRCode = async () => {
+    if (!qrCode) return;
+
+    try {
+      const response = await fetch(qrCode);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `qr-code-${Date.now()}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading QR code:", error);
+    }
+  };
+
+  const copyToClipboard = async () => {
+    if (!input) return;
+
+    try {
+      await navigator.clipboard.writeText(input);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error("Error copying to clipboard:", error);
+    }
+  };
+
+  return (
+    <div className="w-full max-w-lg">
+      <div className="space-y-8">
+        <div>
+          <label htmlFor="qr-input" className="block text-sm font-medium text-foreground mb-3">
+            Enter text or URL
+          </label>
+          <input
+            id="qr-input"
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type something..."
+            className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all text-foreground placeholder:text-muted-foreground"
+          />
+        </div>
+
+        {qrCode && (
+          <div className="flex flex-col items-center space-y-6">
+            <div className="bg-white p-4 rounded-lg shadow-sm border border-border">
+              <img
+                src={qrCode}
+                alt="Generated QR Code"
+                className="w-80 h-80 max-w-full"
+              />
+            </div>
+
+            <div className="flex gap-3 flex-wrap justify-center">
+              <button
+                onClick={downloadQRCode}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg font-medium transition-all hover:shadow-md active:scale-95"
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </button>
+              <button
+                onClick={copyToClipboard}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-lg font-medium transition-all hover:shadow-sm active:scale-95"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" />
+                    Copy Text
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {loading && input && !qrCode && (
+          <div className="flex justify-center py-8">
+            <div className="animate-spin">
+              <div className="w-8 h-8 border-2 border-border border-t-accent rounded-full" />
+            </div>
+          </div>
+        )}
+
+        {!input && (
+          <div className="text-center py-12 text-muted-foreground">
+            <p className="text-sm">Enter text or a URL to generate a QR code</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
