@@ -18,9 +18,9 @@ export default function Index() {
         <QRCodeGenerator />
       </main>
 
-      <footer className="border-t border-border mt-auto">
+      <footer className="border-t border-white/10 bg-black/30 backdrop-blur-sm mt-auto">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-white/70">
             Free, fast, and secure QR code generation
           </p>
         </div>
