@@ -128,7 +128,7 @@ export default function QRCodeGenerator() {
         )}
 
         {!input && (
-          <div className="text-center py-12 text-muted-foreground">
+          <div className="text-center py-12 text-white/60">
             <p className="text-sm">Enter text or a URL to generate a QR code</p>
           </div>
         )}
