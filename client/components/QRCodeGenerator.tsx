@@ -131,7 +131,7 @@ export default function QRCodeGenerator() {
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className={`w-full px-6 py-12 border-2 border-dashed rounded-lg transition-all backdrop-blur-sm ${
+            className={`w-full px-4 py-8 border-2 border-dashed rounded-lg transition-all backdrop-blur-sm ${
               isDragging
                 ? "border-cyan-400 bg-cyan-500/10"
                 : "border-white/30 bg-white/5 hover:border-white/50 hover:bg-white/10"
