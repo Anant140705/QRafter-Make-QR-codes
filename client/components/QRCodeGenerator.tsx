@@ -21,7 +21,9 @@ export default function QRCodeGenerator() {
     setLoading(true);
     try {
       const encodedText = encodeURIComponent(text);
-      setQrCode(`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodedText}`);
+      setQrCode(
+        `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodedText}`,
+      );
     } catch (error) {
       console.error("Error generating QR code:", error);
     } finally {
@@ -113,7 +115,10 @@ export default function QRCodeGenerator() {
     <div className="w-full max-w-lg">
       <div className="space-y-8">
         <div>
-          <label htmlFor="qr-input" className="block text-sm font-medium text-white mb-3">
+          <label
+            htmlFor="qr-input"
+            className="block text-sm font-medium text-white mb-3"
+          >
             Enter text or URL
           </label>
           <input
@@ -143,7 +148,9 @@ export default function QRCodeGenerator() {
               <Upload className="w-8 h-8 text-orange-500" />
               <div className="text-center">
                 <p className="text-white font-medium">Drag and drop here</p>
-                <p className="text-white/50 text-xs mt-1">Drop a text file to generate QR code</p>
+                <p className="text-white/50 text-xs mt-1">
+                  Drop a text file to generate QR code
+                </p>
               </div>
             </div>
           </div>
@@ -152,7 +159,9 @@ export default function QRCodeGenerator() {
         {qrCode && (
           <div className="flex flex-col items-center space-y-6">
             <div className="bg-gradient-to-br from-green-500/20 to-cyan-500/20 p-4 rounded-lg border border-green-500/30">
-              <p className="text-green-400 text-sm font-medium">✓ QR Code Generated!</p>
+              <p className="text-green-400 text-sm font-medium">
+                ✓ QR Code Generated!
+              </p>
             </div>
 
             <button

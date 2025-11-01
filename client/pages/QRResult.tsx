@@ -122,7 +122,11 @@ export default function QRResult() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition-all hover:shadow-lg active:scale-95 disabled:opacity-50"
               >
                 <Share2 className="w-5 h-5" />
-                {shareLoading ? "Sharing..." : shareCopied ? "Copied!" : "Share"}
+                {shareLoading
+                  ? "Sharing..."
+                  : shareCopied
+                    ? "Copied!"
+                    : "Share"}
               </button>
 
               <button
