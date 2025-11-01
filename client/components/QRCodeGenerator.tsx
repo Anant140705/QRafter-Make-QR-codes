@@ -125,7 +125,7 @@ export default function QRCodeGenerator() {
         </div>
 
         <div className="relative">
-          <div className="text-center text-white/50 text-sm mb-3">Or</div>
+          <div className="text-center text-white/50 text-sm my-3">Or</div>
           <div
             ref={dropZoneRef}
             onDragOver={handleDragOver}
