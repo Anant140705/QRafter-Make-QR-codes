@@ -66,6 +66,47 @@ export default function QRCodeGenerator() {
     }
   };
 
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    const files = e.dataTransfer.files;
+    if (files.length > 0) {
+      const file = files[0];
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const content = event.target?.result as string;
+        if (content) {
+          setInput(content.trim());
+        }
+      };
+
+      reader.onerror = () => {
+        console.error("Error reading file");
+      };
+
+      if (file.type.startsWith("text/")) {
+        reader.readAsText(file);
+      } else {
+        console.error("Please drop a text file");
+      }
+    }
+  };
+
   return (
     <div className="w-full max-w-lg">
       <div className="space-y-8">
