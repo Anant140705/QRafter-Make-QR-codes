@@ -68,7 +68,7 @@ export default function QRCodeGenerator() {
     <div className="w-full max-w-lg">
       <div className="space-y-8">
         <div>
-          <label htmlFor="qr-input" className="block text-sm font-medium text-foreground mb-3">
+          <label htmlFor="qr-input" className="block text-sm font-medium text-white mb-3">
             Enter text or URL
           </label>
           <input
@@ -77,7 +77,7 @@ export default function QRCodeGenerator() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type something..."
-            className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent transition-all text-foreground placeholder:text-muted-foreground"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all text-white placeholder:text-white/50 backdrop-blur-sm"
           />
         </div>
 
