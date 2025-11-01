@@ -109,7 +109,7 @@ export default function QRCodeGenerator() {
 
   return (
     <div className="w-full max-w-lg">
-      <div className="space-y-8">
+      <div className="space-y-0">
         <div>
           <label htmlFor="qr-input" className="block text-sm font-medium text-white mb-3">
             Enter text or URL
@@ -125,7 +125,7 @@ export default function QRCodeGenerator() {
         </div>
 
         <div className="relative">
-          <div className="text-center text-white/50 text-sm my-3">Or</div>
+          <div className="text-center text-white/50 text-sm my-6">Or</div>
           <div
             ref={dropZoneRef}
             onDragOver={handleDragOver}
