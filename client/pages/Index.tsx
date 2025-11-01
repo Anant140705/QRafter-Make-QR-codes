@@ -14,7 +14,7 @@ export default function Index() {
             <span className="text-orange-500">QR</span><span className="text-white">afted</span>
           </h1>
           <p className="mt-2 text-white/70">
-            beautifully crafted codes
+            Beautifully crafted codes
           </p>
         </div>
       </header>
