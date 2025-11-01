@@ -6,7 +6,9 @@ export default function QRCodeGenerator() {
   const [qrCode, setQrCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const dropZoneRef = useRef<HTMLDivElement>(null);
 
   const generateQRCode = async (text: string) => {
     if (!text.trim()) {
